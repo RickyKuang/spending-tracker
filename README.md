@@ -9,7 +9,7 @@ This repo contains the **Go backend API** — the central service that all clien
 ```
                 ┌──────────┐  ┌──────────┐  ┌──────────┐
                 │ Rust CLI │  │ React UI │  │ Future   │
-                │ (Ratatui)│  │          │  │ clients  │
+                │          │  │          │  │ clients  │
                 └────┬─────┘  └────┬─────┘  └────┬─────┘
                      │ HTTP        │ HTTP        │ HTTP
                      └─────────┬───┘─────────────┘
@@ -44,7 +44,7 @@ This repo contains the **Go backend API** — the central service that all clien
 | Repo | Description | Status |
 |------|-------------|--------|
 | `spending-tracker` (this repo) | Go backend API | 🚧 In progress |
-| `spending-tracker-rust-cli` | Rust CLI with Ratatui TUI | 📋 Planned |
+| `spending-tracker-rust-cli` | Rust CLI | 📋 Planned |
 | `spending-tracker-web` | React web dashboard | 📋 Planned |
 
 ## Project structure
@@ -97,7 +97,6 @@ spending-tracker/
 ```bash
 git clone https://github.com/RickyKuang/spending-tracker.git
 cd spending-tracker
-go mod tidy
 ```
 
 ### Run
@@ -113,7 +112,3 @@ Transaction syncing is on-demand via API endpoint. Scheduled sync (cron) is a fu
 ```
 POST /api/sync
 ```
-
-## License
-
-MIT
