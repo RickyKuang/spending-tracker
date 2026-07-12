@@ -1,3 +1,4 @@
+// Command spender is the Go reference CLI for the spending-tracker backend API.
 package main
 
 import (
@@ -11,19 +12,29 @@ func main() {
 		os.Exit(2)
 	}
 
+	var err error
 	switch os.Args[1] {
+	case "auth":
+		err = runAuth(os.Args[2:])
+	case "link":
+		err = runLink(os.Args[2:])
 	case "sync":
-		fmt.Println("sync: not implemented yet")
+		err = runSync(os.Args[2:])
 	case "accounts":
-		fmt.Println("accounts: not implemented yet")
+		err = runAccounts(os.Args[2:])
 	case "transactions":
-		fmt.Println("transactions: not implemented yet")
+		err = runTransactions(os.Args[2:])
 	default:
 		usage()
 		os.Exit(2)
 	}
+
+	if err != nil {
+		fmt.Fprintln(os.Stderr, "spender:", err)
+		os.Exit(1)
+	}
 }
 
 func usage() {
-	fmt.Fprintln(os.Stderr, "usage: spender <sync|accounts|transactions>")
+	fmt.Fprintln(os.Stderr, "usage: spender <auth|link|sync|accounts|transactions> [args]")
 }
